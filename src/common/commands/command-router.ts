@@ -36,6 +36,10 @@ export abstract class CommandRouter {
                     }
                 }
             }
+            else
+            {
+                this.executeCommand(command)
+            }
         }
     }
 }
