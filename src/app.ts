@@ -13,7 +13,7 @@ function makeChannel(message, name){
     server.channels.create(name,{type:"text"});
 }
 
-var quiz = [];
+var quiz: any = [];
 
 client.on('message', (receivedMessage) => {
     // Prevent bot from responding to its own messages
@@ -34,7 +34,7 @@ client.on('message', (receivedMessage) => {
                         receivedMessage.channel.send("Quiz answers: " + quiz.join())
                         break;
                     case 'push':
-                        quiz.push(cmd[2])
+                        quiz.push(cmd[2] as string)
                         receivedMessage.channel.send("Quiz answers: " + quiz.join())
                         break;
                 }
