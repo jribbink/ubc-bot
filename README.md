@@ -8,4 +8,4 @@ I designed this as a project for fun given the online-learning situation of 2020
 **npm run dev** run the dev environment
 
 # Resources
-[DiscordJS]https://discord.js.org/#/docs/main/stable/general/welcome
+Discord JS - https://discord.js.org/#/docs/main/stable/general/welcome
