@@ -1,10 +1,34 @@
+import { Channel, Client, Guild, TextChannel, Collection } from 'discord.js';
 import { apiToken } from './api-config'
 
-const Discord = require('discord.js')
-const client = new Discord.Client()
+import Discord = require('discord.js')
+const client: Client = new Discord.Client({partials: ["CHANNEL", "GUILD_MEMBER", "MESSAGE", "REACTION", "USER"]})
+
+function devMessage() {
+    client.guilds.cache.forEach((guild: Guild) => {
+        var foundChannel = false;
+        guild.channels.cache.forEach(channel => {
+            if(channel.name == "ubc-bot")
+            {
+                foundChannel = true;
+            }
+        });
+
+        if(!foundChannel)
+        {
+            guild.channels.create("ubc-bot", {type:"text"}).then(channel =>
+            {
+                channel.send("Hello @everyone! My name is UBC Bot.\nI am a community project, please contribute on github at https://github.com/jribbink/ubc-bot")
+            });
+        }
+    });
+}
+
+
 
 client.on('ready', () => {
-    console.log("Logged in as: " + client.user.username)
+    console.log("Logged in as: " + client.user!!.username)
+    devMessage()
 })
 
 function makeChannel(message, name){
@@ -40,7 +64,7 @@ client.on('message', (receivedMessage) => {
                 }
                 break;
             case 'channel':
-                if(receivedMessage.author == "222857317094260740")
+                if(receivedMessage.author.id == "222857317094260740")
                 {
                     switch(cmd[1])
                     {
