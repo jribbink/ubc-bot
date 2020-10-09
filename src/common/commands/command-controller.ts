@@ -1,0 +1,5 @@
+// THIS WILL BE USED FOR VARIOUS VALIDATION PURPOSES OR OTHER COMMAND SPECIFIC METHODS, CURRENTLY A PLACEHOLDER
+
+export abstract class CommandController {
+    constructor() {}
+}

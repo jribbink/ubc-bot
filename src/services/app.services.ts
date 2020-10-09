@@ -1,7 +1,7 @@
 import { ServersService } from '../services'
 
 export class AppDataServices {
-    serversService: ServersService
+    public serversService: ServersService
 
     constructor() {
         this.serversService = new ServersService()

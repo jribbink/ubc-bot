@@ -1,12 +1,17 @@
 import { Channel, Client, Guild, TextChannel, Collection } from 'discord.js';
 import { apiToken } from './api-config'
 import { AppDataServices } from './services/app.services'
+import { CommandsRouter } from './commands/commands-router'
 
 import Discord = require('discord.js')
+import { Command } from './common/commands/command';
 const client: Client = new Discord.Client({partials: ["CHANNEL", "GUILD_MEMBER", "MESSAGE", "REACTION", "USER"]})
 
 /* Init Global Services */
 const services = new AppDataServices();
+
+/* Init Command Router */
+const router = new CommandsRouter(services);
 
 
 function devMessage() {
@@ -52,7 +57,17 @@ client.on('message', (receivedMessage) => {
 
     if(receivedMessage.content.startsWith("->"))
     {
-        var cmd = receivedMessage.content.substr(2).split(" ");
+        router.executeCommand(new Command(receivedMessage))
+    }
+
+    console.log("[" + receivedMessage.author + "] " + receivedMessage.content)
+})
+
+client.login(apiToken)
+
+
+
+        /*var cmd = receivedMessage.content.substr(2).split(" ");
         switch(cmd[0])
         {
             case 'quiz':
@@ -94,10 +109,4 @@ client.on('message', (receivedMessage) => {
             case 'github':
                 receivedMessage.channel.send("https://github.com/jribbink/ubc-bot")
                 break;
-        }
-    }
-
-    console.log("[" + receivedMessage.author + "] " + receivedMessage.content)
-})
-
-client.login(apiToken)
+        }*/
