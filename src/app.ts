@@ -1,8 +1,13 @@
 import { Channel, Client, Guild, TextChannel, Collection } from 'discord.js';
 import { apiToken } from './api-config'
+import { AppDataServices } from './services/app.services'
 
 import Discord = require('discord.js')
 const client: Client = new Discord.Client({partials: ["CHANNEL", "GUILD_MEMBER", "MESSAGE", "REACTION", "USER"]})
+
+/* Init Global Services */
+const services = new AppDataServices();
+
 
 function devMessage() {
     client.guilds.cache.forEach((guild: Guild) => {
@@ -47,7 +52,7 @@ client.on('message', (receivedMessage) => {
 
     if(receivedMessage.content.startsWith("->"))
     {
-        var cmd = receivedMessage.content.substr(3).split(" ");
+        var cmd = receivedMessage.content.substr(2).split(" ");
         switch(cmd[0])
         {
             case 'quiz':
