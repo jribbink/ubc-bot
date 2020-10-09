@@ -9,3 +9,6 @@ I designed this as a project for fun given the online-learning situation of 2020
 
 # Resources
 Discord JS - https://discord.js.org/#/docs/main/stable/general/welcome
+
+# Command Syntax
+To be added soon....
