@@ -1,1 +1,1 @@
-export const apiToken = "NzYyODAyMDc1ODk3NTYxMDg4.X3ucyw.hRKAWrpdoBb8Y2kDkMyet-lNGeU"
+export const apiToken = "NzYyODAyMDc1ODk3NTYxMDg4.X3ucyw.TEiGVO7fTH6aiSFkAhUZxCoJz8k"
